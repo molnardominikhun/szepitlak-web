@@ -228,7 +228,7 @@ export const ContactForm: React.FC = () => {
       )}
 
       <TurnstileWidget
-        siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+        siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAAD5NiaWg1_kOnXOm'}
         onSuccess={(token) => {
           setTurnstileToken(token);
           setSubmitError(null);
