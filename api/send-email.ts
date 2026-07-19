@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { data, error } = await resend.emails.send({
       from: 'Szépít-Lak Weboldal <onboarding@resend.dev>',
       to: 'szepitlakinfo@gmail.com',
-      reply_to: email,
+      replyTo: email,
       subject: `Szépít-Lak ajánlatkérés – ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; color: #1a202c;">
