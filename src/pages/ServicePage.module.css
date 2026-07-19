@@ -88,7 +88,7 @@
 }
 
 .block {
-  padding-block: var(--space-10);
+  padding-block: var(--space-16); /* Növelt függőleges térköz a szellősebb elrendezésért */
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -102,6 +102,9 @@
   font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
   color: var(--color-text);
   margin-bottom: var(--space-5);
+  border-left: 4px solid var(--color-cta); /* Prémium zöld szegély bal oldalon */
+  padding-left: var(--space-4); /* Távolság a szegélytől */
+  line-height: 1.15;
 }
 
 .blockLead {
