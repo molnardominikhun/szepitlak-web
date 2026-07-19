@@ -84,17 +84,28 @@
 
 /* Content */
 .content {
-  background-color: var(--color-white);
+  background-color: var(--color-bg); /* Mineral gray page background */
+  padding-block: var(--space-12);
 }
 
 .block {
-  padding-block: var(--space-16); /* Növelt függőleges térköz a szellősebb elrendezésért */
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white); /* White card for each product section */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 768px) {
+  .block {
+    padding: var(--space-12) var(--space-10);
+    margin-bottom: var(--space-8);
+  }
 }
 
 .block:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .blockTitle {
@@ -137,7 +148,7 @@
 
 .materialCard {
   padding: var(--space-6);
-  background-color: var(--color-white);
+  background-color: var(--color-bg); /* Contrasting background inside the white card */
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
@@ -176,16 +187,20 @@
 
 /* --- Door Configurator Section --- */
 .configuratorBlock {
-  margin-top: var(--space-16);
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-16);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .configuratorBlock {
+    margin-top: var(--space-8);
+  }
 }
 
 .configuratorCard {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  background-color: var(--color-bg); /* Neutrális szürke kártya a fehér háttéren */
+  background-color: var(--color-white); /* Fehér kártya a szürke háttéren a többi blokkhoz igazodva */
   border: 1px solid var(--color-border);
   border-left: 6px solid var(--color-cta);
   border-radius: var(--radius-xl);
