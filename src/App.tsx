@@ -7,6 +7,7 @@ import { ArnyekolokPage } from './pages/ArnyekolokPage';
 import { BelteriAjtokPage } from './pages/BelteriAjtokPage';
 import { SzunyoghalokPage } from './pages/SzunyoghalokPage';
 import { KapcsolatPage } from './pages/KapcsolatPage';
+import { ReferencesPage } from './pages/ReferencesPage';
 import { AdatkezelesiPage, CookiePage, ImpresszumPage } from './pages/LegalPages';
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: 'szolgaltatasaink/arnyekolok', element: <ArnyekolokPage /> },
       { path: 'szolgaltatasaink/belteri-ajtok', element: <BelteriAjtokPage /> },
       { path: 'szolgaltatasaink/szunyoghalok', element: <SzunyoghalokPage /> },
+      { path: 'referenciak', element: <ReferencesPage /> },
       { path: 'kapcsolat', element: <KapcsolatPage /> },
       { path: 'adatkezelesi-tajekoztato', element: <AdatkezelesiPage /> },
       { path: 'cookie-tajekoztato', element: <CookiePage /> },

@@ -27,6 +27,10 @@ export const navItems: NavItem[] = [
     ],
   },
   {
+    label: 'Referenciák',
+    href: '/referenciak',
+  },
+  {
     label: 'Kapcsolat',
     href: '/kapcsolat',
   },

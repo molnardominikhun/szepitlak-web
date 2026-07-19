@@ -88,8 +88,13 @@ export const Footer: React.FC = () => {
 
         {/* Jogi */}
         <div className={styles.col}>
-          <h3 className={styles.colTitle}>Jogi információk</h3>
+          <h3 className={styles.colTitle}>Gyorslinkek</h3>
           <ul className={styles.linkList}>
+            <li>
+              <Link to="/referenciak" className={styles.footerLink}>
+                Referenciáink
+              </Link>
+            </li>
             <li>
               <Link to="/adatkezelesi-tajekoztato" className={styles.footerLink}>
                 Adatkezelési tájékoztató
