@@ -14,7 +14,6 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
   const trackOnce = useRef(false);
   const [current, setCurrent] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const touchStartX = useRef<number | null>(null);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const total = items.length;
@@ -66,16 +65,32 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
     return () => window.removeEventListener('keydown', onLightboxKey);
   }, [lightboxIndex, total]);
 
-  // Érintés kezelés
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0]?.clientX ?? null;
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diff = (e.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
-    if (diff > 50) prev();
-    else if (diff < -50) next();
-    touchStartX.current = null;
+  // Görgetés a megfelelő pozícióba gomb/dot kattintás után (mobilon)
+  useEffect(() => {
+    if (window.innerWidth < 768 && sliderRef.current) {
+      const trackElement = sliderRef.current.querySelector(`.${styles.track}`);
+      if (trackElement) {
+        const slideWidth = trackElement.clientWidth;
+        trackElement.scrollTo({
+          left: current * slideWidth,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [current]);
+
+  // Görgetés figyelése a dot-ok szinkronizálásához mobilon
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768) return;
+    const container = e.currentTarget;
+    const scrollLeft = container.scrollLeft;
+    const width = container.clientWidth;
+    if (width > 0) {
+      const newIndex = Math.round(scrollLeft / width);
+      if (newIndex >= 0 && newIndex < total && newIndex !== current) {
+        setCurrent(newIndex);
+      }
+    }
   };
 
   if (total === 0) return null;
@@ -90,12 +105,10 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
     >
       <div
         className={styles.track}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        onScroll={handleScroll}
       >
         {items.map((item, idx) => {
           const offset = ((idx - current + total) % total + total) % total;
-          const isVisible = offset === 0 || offset === 1 || offset === total - 1;
           return (
             <div
               key={item.id}
@@ -108,25 +121,21 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
                 onClick={() => setLightboxIndex(idx)}
                 title="Kattints a kép nagyításához"
               >
-                {isVisible && (
-                  <>
-                    <img
-                      src={item.imageSrc}
-                      alt={item.imageAlt}
-                      className={styles.image}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                        const ph = e.currentTarget.nextElementSibling as HTMLElement;
-                        if (ph) ph.style.display = 'flex';
-                      }}
-                    />
-                    <div className={styles.placeholder} aria-hidden="true">
-                      <span>📷 Kép hamarosan</span>
-                      <small>{item.imageAlt}</small>
-                    </div>
-                  </>
-                )}
+                <img
+                  src={item.imageSrc}
+                  alt={item.imageAlt}
+                  className={styles.image}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const ph = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (ph) ph.style.display = 'flex';
+                  }}
+                />
+                <div className={styles.placeholder} aria-hidden="true">
+                  <span>📷 Kép hamarosan</span>
+                  <small>{item.imageAlt}</small>
+                </div>
               </div>
               <div className={styles.caption}>
                 <p className={styles.work}>{item.workDescription}</p>
