@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { MobileBottomBar } from './MobileBottomBar';
 import { FloatingCallbackButton } from './FloatingCallbackButton';
 
 export const Layout: React.FC = () => {
@@ -18,7 +17,6 @@ export const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <MobileBottomBar />
       {showFloating && <FloatingCallbackButton />}
     </>
   );

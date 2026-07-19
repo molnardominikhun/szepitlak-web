@@ -25,14 +25,6 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Tér a mobil alsó sávnak */
-  padding-bottom: var(--mobile-bar-h);
-}
-
-@media (min-width: 1024px) {
-  body {
-    padding-bottom: 0;
-  }
 }
 
 /* --- Alap tipográfia --- */

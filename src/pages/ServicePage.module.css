@@ -293,3 +293,16 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 767px) {
+  .configuratorAction {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+  .returnAction {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
