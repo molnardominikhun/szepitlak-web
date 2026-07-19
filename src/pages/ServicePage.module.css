@@ -1,0 +1,295 @@
+/* Megosztott CSS a 4 szolgáltatási aloldalhoz */
+
+.hero {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-20);
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroInner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+.intro {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.heroImage {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background-color: var(--color-beige-light);
+  position: relative;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-6);
+  border: 1px dashed var(--color-border-dark);
+  border-radius: var(--radius-xl);
+}
+
+.placeholder span:first-child {
+  font-size: 2rem;
+}
+
+/* Content */
+.content {
+  background-color: var(--color-white);
+}
+
+.block {
+  padding-block: var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.blockTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+
+.blockLead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+}
+
+.blockDesc {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 720px;
+}
+
+/* 3 hasáb (anyagtípusok, belső árnyékolók) */
+.threeCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .threeCol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.materialCard {
+  padding: var(--space-6);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.materialTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.materialDesc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* Inline CTA blokk */
+.inlineCta {
+  padding: var(--space-10) var(--space-8);
+  background-color: var(--color-sage-light);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  margin-top: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.inlineCtaTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  color: var(--color-text);
+}
+
+/* --- Door Configurator Section --- */
+.configuratorBlock {
+  margin-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-16);
+}
+
+.configuratorCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-bg); /* Neutrális szürke kártya a fehér háttéren */
+  border: 1px solid var(--color-border);
+  border-left: 6px solid var(--color-cta);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .configuratorCard {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-8);
+    padding: var(--space-10) var(--space-8);
+  }
+}
+
+.configuratorIconWrap {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-cta);
+  border: 1px solid var(--color-cta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.configuratorContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.configuratorTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  color: var(--color-text);
+  margin-top: var(--space-1);
+}
+
+.configuratorText {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.configuratorNote {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-1);
+  line-height: var(--leading-normal);
+}
+
+.configuratorAction {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}
+
+/* Return visitor CTA card */
+.returnCard {
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--space-6);
+  background-color: var(--color-sage-light); /* Kiemelt halványzöld kártya a visszatérőnek */
+  border: 1px solid var(--color-border);
+  border-left: 6px solid var(--color-cta);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  box-shadow: var(--shadow-md);
+  animation: fadeInUp 0.4s ease both;
+}
+
+@media (min-width: 768px) {
+  .returnCard {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-8) var(--space-8);
+  }
+}
+
+.returnTextWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 620px;
+}
+
+.returnTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+}
+
+.returnText {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.returnAction {
+  flex-shrink: 0;
+}
+

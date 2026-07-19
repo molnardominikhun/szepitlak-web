@@ -1,0 +1,104 @@
+.banner {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-16);
+}
+
+.banner.dark {
+  background-color: var(--color-text);
+  border-color: transparent;
+}
+
+.banner.dark .title,
+.banner.dark .description,
+.banner.dark .trustLine {
+  color: var(--color-white);
+}
+
+.banner.dark .description {
+  color: var(--color-accent);
+}
+
+.banner.dark .btnPhone {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.banner.dark .btnPhone:hover {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border-color: var(--color-white);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 640px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  color: var(--color-text);
+}
+
+.description {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  align-items: center;
+}
+
+.btnPrimary {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+.btnPhone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-3) var(--space-6);
+}
+
+.phoneNum {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  opacity: 0.7;
+}
+
+.trustLine {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .actions {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,64 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-mobile-bar);
+  display: flex;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 16px rgba(29, 30, 27, 0.08);
+  height: var(--mobile-bar-h);
+}
+
+/* Desktop nézetben rejtett */
+@media (min-width: 1024px) {
+  .bar {
+    display: none;
+  }
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: var(--space-2);
+}
+
+.btn:hover {
+  background-color: var(--color-beige-light);
+  color: var(--color-cta);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: -2px;
+}
+
+.btnPrimary {
+  background-color: var(--color-cta);
+  color: var(--color-white) !important;
+}
+
+.btnPrimary:hover {
+  background-color: var(--color-cta-hover) !important;
+  color: var(--color-white) !important;
+}
+
+.divider {
+  width: 1px;
+  background-color: var(--color-border);
+  margin-block: var(--space-3);
+}
