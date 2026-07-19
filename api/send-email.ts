@@ -10,11 +10,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, phone, email, location, description } = req.body;
+    const { name, phone, email, location, description, turnstileToken } = req.body;
 
     // Alapvető validáció
     if (!name || !phone || !email || !location || !description) {
       return res.status(400).json({ error: 'Hiányzó kötelező mezők' });
+    }
+
+    if (!turnstileToken) {
+      return res.status(400).json({ error: 'Hiányzó botvédelem azonosító (Turnstile)' });
+    }
+
+    // Cloudflare Turnstile token hitelesítés
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY || '1x000000000000000000000000000000AA';
+    
+    const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${encodeURIComponent(turnstileSecret)}&response=${encodeURIComponent(turnstileToken)}`,
+    });
+
+    const verifyData = (await verifyResponse.json()) as { success: boolean; 'error-codes'?: string[] };
+    
+    if (!verifyData.success) {
+      console.error('Turnstile verification failed:', verifyData);
+      return res.status(400).json({ error: 'Sikertelen botvédelem ellenőrzés (Turnstile). Kérjük próbálja újra.' });
     }
 
     const { data, error } = await resend.emails.send({

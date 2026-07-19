@@ -4,6 +4,7 @@ import { useConversionEvent } from '../../hooks/useConversionEvent';
 import { CONVERSION_EVENTS } from '../../utils/analytics';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { TurnstileWidget } from '../ui/TurnstileWidget';
 
 interface FormData {
   name: string;
@@ -51,6 +52,7 @@ export const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [started, setStarted] = useState(false);
 
   const handleChange = (field: keyof FormData) => (
@@ -80,6 +82,12 @@ export const ContactForm: React.FC = () => {
       (firstError as HTMLElement)?.focus();
       return;
     }
+    
+    if (!turnstileToken) {
+      setSubmitError('Kérjük, igazolja, hogy Ön nem robot (Cloudflare Turnstile).');
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -94,6 +102,7 @@ export const ContactForm: React.FC = () => {
           email: data.email,
           location: data.location,
           description: data.description,
+          turnstileToken,
         }),
       });
 
@@ -217,6 +226,22 @@ export const ContactForm: React.FC = () => {
           <AlertCircle size={13} /> {submitError}
         </p>
       )}
+
+      <TurnstileWidget
+        siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+        onSuccess={(token) => {
+          setTurnstileToken(token);
+          setSubmitError(null);
+        }}
+        onError={() => {
+          setTurnstileToken(null);
+          setSubmitError('Botvédelem ellenőrzési hiba. Kérjük, frissítse az oldalt vagy próbálja újra.');
+        }}
+        onExpire={() => {
+          setTurnstileToken(null);
+          setSubmitError('Az ellenőrzés lejárt. Kérjük, kattintson újra az ellenőrző dobozra.');
+        }}
+      />
 
       <button type="submit" className={`btn btn--primary ${styles.submit}`} disabled={loading}>
         {loading ? 'Küldés...' : 'Ajánlatot kérek'}
