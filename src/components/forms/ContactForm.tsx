@@ -50,6 +50,7 @@ export const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [started, setStarted] = useState(false);
 
   const handleChange = (field: keyof FormData) => (
@@ -68,8 +69,9 @@ export const ContactForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     const errs = validate(data);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
@@ -79,25 +81,53 @@ export const ContactForm: React.FC = () => {
       return;
     }
     setLoading(true);
-    // TESZTMÓD
-    setTimeout(() => {
-      track(CONVERSION_EVENTS.CONTACT_FORM_TEST_SUBMIT, {
-        name: data.name,
-        location: data.location,
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          location: data.location,
+          description: data.description,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error('Hálózati hiba történt');
+      }
+
+      const result = await response.json();
+      if (result.success) {
+        track(CONVERSION_EVENTS.CONTACT_FORM_TEST_SUBMIT, {
+          name: data.name,
+          location: data.location,
+          status: 'success',
+        });
+        setSubmitted(true);
+        setData(EMPTY);
+      } else {
+        throw new Error(result.error || 'Ismeretlen hiba');
+      }
+    } catch (err) {
+      console.error('Submit Error:', err);
+      setSubmitError('Az elküldés nem sikerült. Kérjük próbálja újra, vagy hívjon minket telefonon.');
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 700);
+    }
   };
 
   if (submitted) {
     return (
       <div className={styles.success} role="alert">
         <CheckCircle size={40} className={styles.successIcon} />
-        <h2 className={styles.successTitle}>Köszönjük a megkeresést!</h2>
+        <h2 className={styles.successTitle}>Köszönjük megkeresését!</h2>
         <p className={styles.successNote}>
-          Ez jelenleg egy tesztbeküldés, ezért az üzenet nem került
-          továbbításra.
+          Hamarosan felvesszük Önnel a kapcsolatot.
         </p>
       </div>
     );
@@ -181,6 +211,12 @@ export const ContactForm: React.FC = () => {
         </label>
       </div>
       {errors.privacy && <p id="cf-privacy-err" className={styles.error} role="alert"><AlertCircle size={13} /> {errors.privacy}</p>}
+
+      {submitError && (
+        <p className={styles.error} style={{ marginTop: 'var(--space-2)', marginBottom: 'var(--space-4)' }} role="alert">
+          <AlertCircle size={13} /> {submitError}
+        </p>
+      )}
 
       <button type="submit" className={`btn btn--primary ${styles.submit}`} disabled={loading}>
         {loading ? 'Küldés...' : 'Ajánlatot kérek'}
