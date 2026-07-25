@@ -22,7 +22,7 @@ export const services: Service[] = [
       'Tartós, energiatakarékos és esztétikus műanyag, fa és alumínium nyílászáró-megoldások az otthon adottságaihoz igazítva.',
     fullDescription:
       'Műanyag, fa és alumínium ablakrendszerek, bejárati ajtók, teraszajtók és tolóajtók – a felméréstől a régi szerkezetek bontásán át az új nyílászárók szakszerű beépítéséig.',
-    imageSrc: '/images/services/nyilaszaro/nyilaszaro-szolgaltatas.png',
+    imageSrc: '/images/services/nyilaszaro/IMG_9005.JPG',
     imageAlt: 'Nyílászáró beépítés – műanyag, fa és alumínium ablakok és ajtók',
   },
   {
@@ -34,7 +34,7 @@ export const services: Service[] = [
       'Redőnyök, zsalúziák és belső árnyékolók a kellemesebb hőérzetért, a szabályozható fényért és a nagyobb komfortért.',
     fullDescription:
       'Külső és belső árnyékolástechnikai megoldások felmérésével, beszerzésével és telepítésével foglalkozunk, a kézi redőnytől az elektromos zsalúziáig.',
-    imageSrc: '/images/services/arnyekolok/arnyekolok-szolgaltatas.png',
+    imageSrc: '/images/services/arnyekolok/IMG_9007.JPG',
     imageAlt: 'Árnyékolástechnikai megoldások – redőnyök és zsalúziák',
   },
   {
@@ -46,7 +46,7 @@ export const services: Service[] = [
       'Stílusos és tartós beltéri ajtók több gyártó kínálatából, az otthon megjelenéséhez és a helyiségek használatához igazítva.',
     fullDescription:
       'Tömör, üvegezett, tolóajtó és egyéb beltéri ajtómegoldások több megbízható gyártó kínálatából, széles szín- és felületválasztékkal.',
-    imageSrc: '/images/services/belteri-ajtok/belteri-ajto-szolgaltatas.png',
+    imageSrc: '/images/services/belteri-ajtok/IMG_9012.JPG',
     imageAlt: 'Beltéri ajtó beépítés – stílusos és tartós megoldások',
   },
   {
@@ -58,7 +58,7 @@ export const services: Service[] = [
       'Egyedi méretre készülő fix, rolós, pliszé és ajtóra szerelhető szúnyoghálók a kényelmes, rovarmentes szellőztetésért.',
     fullDescription:
       'Fix keretes, rolós, pliszé és nyíló/toló szúnyogháló rendszerek ablakokra és teraszajtókra, egyedi méretre gyártva.',
-    imageSrc: '/images/services/szunyoghalok/szunyoghalo-szolgaltatas.png',
+    imageSrc: '/images/services/szunyoghalok/IMG_9010.JPG',
     imageAlt: 'Szúnyogháló – fix, rolós és pliszé megoldások ablakokra és ajtókra',
   },
 ];

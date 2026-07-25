@@ -47,8 +47,8 @@ export const ArnyekolokPage: React.FC = () => {
           </div>
           <div className={styles.heroImage}>
             <img
-              src="/images/services/arnyekolok/arnyekolok-szolgaltatas.png"
-              alt="Modern alumínium zsalúzia külső árnyékoló rendszer egy teraszajtón"
+              src="/images/services/arnyekolok/IMG_9007.JPG"
+              alt="Árnyékolástechnika – redőnyök és zsalúziák Tatabányán"
               className={styles.heroImg}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

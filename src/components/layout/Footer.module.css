@@ -53,8 +53,9 @@
 
 .brandKft {
   font-size: var(--text-sm);
-  font-family: var(--font-body);
+  font-family: inherit;
   color: var(--color-accent);
+  margin-left: var(--space-1);
 }
 
 .slogan {

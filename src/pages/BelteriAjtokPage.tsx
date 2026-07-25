@@ -61,8 +61,8 @@ export const BelteriAjtokPage: React.FC = () => {
           </div>
           <div className={styles.heroImage}>
             <img
-              src="/images/services/belteri-ajtok/belteri-ajto-szolgaltatas.png"
-              alt="Prémium designer beltéri ajtó letisztult vonalakkal és modern antracit színben"
+              src="/images/services/belteri-ajtok/IMG_9012.JPG"
+              alt="Beltéri ajtók beépítése és cseréje Tatabányán"
               className={styles.heroImg}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

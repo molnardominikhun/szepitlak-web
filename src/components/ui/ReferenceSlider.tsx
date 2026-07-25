@@ -137,15 +137,17 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
                   <small>{item.imageAlt}</small>
                 </div>
               </div>
-              <div className={styles.caption}>
-                <p className={styles.work}>{item.workDescription}</p>
-                {item.quote && item.quoteAuthor && (
-                  <blockquote className={styles.quote}>
-                    <p>„{item.quote}"</p>
-                    <footer>— {item.quoteAuthor}</footer>
-                  </blockquote>
-                )}
-              </div>
+              {(item.workDescription || (item.quote && item.quoteAuthor)) && (
+                <div className={styles.caption}>
+                  {item.workDescription && <p className={styles.work}>{item.workDescription}</p>}
+                  {item.quote && item.quoteAuthor && (
+                    <blockquote className={styles.quote}>
+                      <p>„{item.quote}"</p>
+                      <footer>— {item.quoteAuthor}</footer>
+                    </blockquote>
+                  )}
+                </div>
+              )}
             </div>
           );
         })}
@@ -165,7 +167,7 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
               key={item.id}
               role="tab"
               aria-selected={idx === current}
-              aria-label={`Referencia ${idx + 1}: ${item.workDescription}`}
+              aria-label={`Referencia ${idx + 1}${item.workDescription ? `: ${item.workDescription}` : ''}`}
               className={`${styles.dot} ${idx === current ? styles.dotActive : ''}`}
               onClick={() => goTo(idx)}
             />
@@ -220,9 +222,11 @@ export const ReferenceSlider: React.FC<ReferenceSliderProps> = ({ items }) => {
               alt={items[lightboxIndex].imageAlt}
               className={styles.lightboxImg}
             />
-            <p className={styles.lightboxCaption}>
-              {items[lightboxIndex].workDescription}
-            </p>
+            {items[lightboxIndex].workDescription && (
+              <p className={styles.lightboxCaption}>
+                {items[lightboxIndex].workDescription}
+              </p>
+            )}
           </div>
 
           <button

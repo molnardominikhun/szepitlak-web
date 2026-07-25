@@ -78,8 +78,8 @@ export const HomePage: React.FC = () => {
           </div>
           <div className={styles.heroImage}>
             <img
-              src="/images/hero/hero-modern-house.png"
-              alt="Prémium modern családi ház nagy üvegfelületekkel és beépített minőségi nyílászárókkal"
+              src="/images/hero/IMG_9001.JPG"
+              alt="Szépít-Lak Kft. – Nyílászáró beépítés és csere"
               className={styles.heroImg}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

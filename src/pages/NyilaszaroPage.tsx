@@ -55,8 +55,8 @@ export const NyilaszaroPage: React.FC = () => {
           </div>
           <div className={styles.heroImage}>
             <img
-              src="/images/services/nyilaszaro/nyilaszaro-szolgaltatas.png"
-              alt="Prémium modern ablakok minimalista homlokzaton"
+              src="/images/services/nyilaszaro/IMG_9005.JPG"
+              alt="Nyílászárók beépítése és cseréje Tatabányán"
               className={styles.heroImg}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

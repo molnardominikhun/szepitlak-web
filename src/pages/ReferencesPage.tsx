@@ -141,9 +141,11 @@ export const ReferencesPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.cardContent}>
-                  <h2 className={styles.cardTitle}>{item.workDescription}</h2>
-                </div>
+                {item.workDescription && (
+                  <div className={styles.cardContent}>
+                    <h2 className={styles.cardTitle}>{item.workDescription}</h2>
+                  </div>
+                )}
               </article>
             ))}
           </div>
@@ -207,11 +209,13 @@ export const ReferencesPage: React.FC = () => {
             </button>
 
             {/* Infó sáv */}
-            <div className={styles.lightboxInfo}>
-              <p className={styles.lightboxTitle}>
-                {filteredReferences[lightboxIndex].workDescription}
-              </p>
-            </div>
+            {filteredReferences[lightboxIndex].workDescription && (
+              <div className={styles.lightboxInfo}>
+                <p className={styles.lightboxTitle}>
+                  {filteredReferences[lightboxIndex].workDescription}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       )}

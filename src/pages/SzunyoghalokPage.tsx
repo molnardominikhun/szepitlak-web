@@ -48,8 +48,8 @@ export const SzunyoghalokPage: React.FC = () => {
           </div>
           <div className={styles.heroImage}>
             <img
-              src="/images/services/szunyoghalok/szunyoghalo-szolgaltatas.png"
-              alt="Prémium pliszé szúnyogháló egy modern toló teraszajtón használat közben"
+              src="/images/services/szunyoghalok/IMG_9010.JPG"
+              alt="Szúnyoghálók méretre gyártása és beépítése Tatabányán"
               className={styles.heroImg}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';

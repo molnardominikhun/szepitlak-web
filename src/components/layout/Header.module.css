@@ -44,7 +44,7 @@
 
 .logoKft {
   font-size: var(--text-sm);
-  font-family: var(--font-body);
+  font-family: inherit;
   font-weight: var(--weight-medium);
   color: var(--color-text-muted);
   margin-left: var(--space-1);
