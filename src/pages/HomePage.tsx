@@ -8,14 +8,19 @@ import { references } from '../data/references';
 import { ServiceCard } from '../components/ui/ServiceCard';
 import { ReferenceSlider } from '../components/ui/ReferenceSlider';
 import { CtaBanner } from '../components/ui/CtaBanner';
-import { Phone, CheckCircle, ClipboardList, Wrench, MessageCircle, ArrowRight } from 'lucide-react';
+import { Phone, ShieldCheck, FileText, Wrench, Handshake, ClipboardList, MessageCircle, ArrowRight, CheckCircle } from 'lucide-react';
 import { useConversionEvent } from '../hooks/useConversionEvent';
 import { CONVERSION_EVENTS } from '../utils/analytics';
 import { PHONE_LINK, PHONE_NUMBER } from '../data/navigation';
 
-const TrustItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+interface TrustItemProps {
+  icon: React.ElementType;
+  children: React.ReactNode;
+}
+
+const TrustItem: React.FC<TrustItemProps> = ({ icon: Icon, children }) => (
   <li className={styles.trustItem}>
-    <CheckCircle size={14} className={styles.trustIcon} aria-hidden="true" />
+    <Icon size={18} className={styles.trustIcon} aria-hidden="true" />
     {children}
   </li>
 );
@@ -99,10 +104,10 @@ export const HomePage: React.FC = () => {
       <section className={styles.trust} ref={trustRef} aria-label="Miért válasszon minket?">
         <div className="container">
           <ul className={styles.trustList}>
-            <TrustItem>Tartós, bevált termékek</TrustItem>
-            <TrustItem>Átlátható ajánlat</TrustItem>
-            <TrustItem>Precíz kivitelezés</TrustItem>
-            <TrustItem>Személyre szabott tanácsadás</TrustItem>
+            <TrustItem icon={ShieldCheck}>Tartós, bevált termékek</TrustItem>
+            <TrustItem icon={FileText}>Átlátható ajánlat</TrustItem>
+            <TrustItem icon={Wrench}>Precíz kivitelezés</TrustItem>
+            <TrustItem icon={Handshake}>Személyre szabott tanácsadás</TrustItem>
           </ul>
         </div>
       </section>
