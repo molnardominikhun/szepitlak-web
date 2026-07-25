@@ -117,6 +117,14 @@ export const ContactForm: React.FC = () => {
           location: data.location,
           status: 'success',
         });
+        if (typeof window !== 'undefined') {
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+            event: 'generate_lead',
+            form_name: 'contact_form',
+            location: data.location,
+          });
+        }
         setSubmitted(true);
         setData(EMPTY);
       } else {

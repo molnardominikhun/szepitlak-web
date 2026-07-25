@@ -72,6 +72,13 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
         name: data.name,
         phone: data.phone,
       });
+      if (typeof window !== 'undefined') {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({
+          event: 'generate_lead',
+          form_name: 'callback_form',
+        });
+      }
       setLoading(false);
       setSubmitted(true);
       if (onSuccess) setTimeout(onSuccess, 2500);
