@@ -72,29 +72,29 @@ export const NyilaszaroPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Anyagtípusok */}
+      {/* Anyagtípusok - Ablakok */}
       <section className={`section ${styles.content}`}>
         <div className="container">
           <div className={styles.block}>
-            <h2 className={styles.blockTitle}>Műanyag, fa és alumínium nyílászárók</h2>
+            <h2 className={styles.blockTitle}>Műanyag, fa és alumínium ablakok</h2>
             <p className={styles.blockLead}>
               Nem minden ingatlanhoz ugyanaz az ablakrendszer jelenti a legjobb
               választást. Az épület adottságai, a kívánt megjelenés, a használat
               módja és a költségkeret alapján segítünk kiválasztani a megfelelő
-              műanyag, fa vagy alumínium megoldást.
+              műanyag, fa vagy alumínium ablakokat.
             </p>
             <div className={styles.threeCol}>
               <MaterialCard
-                title="Műanyag"
-                desc="Jó ár-érték arányú, könnyen karbantartható megoldás, amely megfelelő profillal és üvegezéssel jó hő- és hangszigetelést biztosíthat."
+                title="Műanyag ablakok"
+                desc="Jó ár-érték arányú, könnyen karbantartható megoldás, amely megfelelő profillal és üvegezéssel jó hő- és hangszigetelést biztosít."
               />
               <MaterialCard
-                title="Fa"
+                title="Fa ablakok"
                 desc="Természetes és időtálló megjelenésű választás, amely különösen jól illik klasszikus vagy természetes anyagokat előnyben részesítő otthonokhoz."
               />
               <MaterialCard
-                title="Alumínium"
-                desc="Stabil, modern és tartós rendszer, amely nagyobb üvegfelületekhez és letisztult építészeti kialakításokhoz is megfelelő lehet."
+                title="Alumínium ablakok"
+                desc="Stabil, modern és tartós ablakrendszer, amely nagyobb üvegfelületekhez és letisztult építészeti kialakításokhoz is ideális."
               />
             </div>
           </div>

@@ -223,6 +223,12 @@
   margin-top: var(--space-2);
 }
 
+.moreReferences {
+  margin-top: var(--space-10);
+  display: flex;
+  justify-content: center;
+}
+
 /* About */
 .about {
   background-color: var(--color-bg);

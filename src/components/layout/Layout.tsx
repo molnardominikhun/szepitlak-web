@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { FloatingCallbackButton } from './FloatingCallbackButton';
+import { CookieConsent } from '../ui/CookieConsent';
 
 export const Layout: React.FC = () => {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ export const Layout: React.FC = () => {
       </main>
       <Footer />
       {showFloating && <FloatingCallbackButton />}
+      <CookieConsent />
     </>
   );
 };

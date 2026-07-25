@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
             }}
           />
           <span className={styles.logoText}>
-            Szépít-Lak<span className={styles.logoKft}>Kft.</span>
+            Szépít-Lak Kft.
           </span>
         </Link>
 

@@ -8,7 +8,7 @@ import { references } from '../data/references';
 import { ServiceCard } from '../components/ui/ServiceCard';
 import { ReferenceSlider } from '../components/ui/ReferenceSlider';
 import { CtaBanner } from '../components/ui/CtaBanner';
-import { Phone, CheckCircle, ClipboardList, Wrench, MessageCircle } from 'lucide-react';
+import { Phone, CheckCircle, ClipboardList, Wrench, MessageCircle, ArrowRight } from 'lucide-react';
 import { useConversionEvent } from '../hooks/useConversionEvent';
 import { CONVERSION_EVENTS } from '../utils/analytics';
 import { PHONE_LINK, PHONE_NUMBER } from '../data/navigation';
@@ -162,6 +162,11 @@ export const HomePage: React.FC = () => {
             <p className={styles.refSubtitle}>Valódi munkák, tartós megoldások</p>
           </div>
           <ReferenceSlider items={references} />
+          <div className={styles.moreReferences}>
+            <Link to="/referenciak" className="btn btn--outline" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+              Összes referencia megtekintése <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 

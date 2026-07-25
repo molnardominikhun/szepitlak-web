@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
               }}
             />
             <span className={styles.brandName}>
-              Szépít-Lak<span className={styles.brandKft}>Kft.</span>
+              Szépít-Lak Kft.
             </span>
           </Link>
           <p className={styles.slogan}>Ahol a minőség ajtót nyit.</p>
