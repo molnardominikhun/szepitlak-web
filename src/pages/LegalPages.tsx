@@ -221,73 +221,108 @@ export const CookiePage: React.FC = () => {
   return (
     <LegalPage title="Cookie (süti) tájékoztató">
       <div className={styles.legal}>
-        <p className={styles.lastUpdated}>Utolsó módosítás: 2025. július 25.</p>
+        <p className={styles.lastUpdated}>Utolsó frissítés: 2026. július 25.</p>
 
-        <h2>1. Mi az a cookie (süti)?</h2>
+        {/* 1. Mik azok a cookie-k? */}
+        <h2>1. Mik azok a cookie-k?</h2>
         <p>
           A cookie-k (sütik) kis méretű szöveges fájlok, amelyeket a böngésző ment el az
-          Ön eszközére a Weboldal látogatásakor. A cookie-k célja, hogy a Weboldal megfelelően
-          működjön, és hogy az Adatkezelő javíthassa a felhasználói élményt.
+          Ön eszközére a weboldal látogatásakor. Segítségükkel a weboldal felismeri a visszatérő
+          látogatókat, megjegyzi a beállításaikat, és lehetővé teszi a forgalmi adatok elemzését.
+          A szepitlak.hu weboldal (a továbbiakban: <strong>Weboldal</strong>) kizárólag az alábbiakban
+          felsorolt technológiákat alkalmazza.
         </p>
 
-        <h2>2. Milyen sütiket használunk?</h2>
-        <h3>2.1. Feltétlenül szükséges (technikai) sütik</h3>
+        {/* 2. Milyen technológiákat használunk? */}
+        <h2>2. Milyen technológiákat használunk?</h2>
+
+        {/* 2.1 */}
+        <h3>2.1. Feltétlenül szükséges és biztonsági technológiák</h3>
         <p>
-          Ezek a sütik a Weboldal alapvető működéséhez szükségesek (pl. biztonsági ellenőrzés,
-          munkamenet-kezelés). Jogalap: GDPR 6. cikk (1) f) pont – jogos érdek. Ezek a sütik
-          nem gyűjtenek személyes adatokat marketing célokra, és nem kapcsolhatók ki.
+          A Weboldal a <strong>Cloudflare Turnstile</strong> szolgáltatást használja az
+          űrlapok spam és bot elleni védelmére. A Turnstile a beállításoktól és a biztonsági
+          kockázatelemzéstől függően helyezhet el sütiket (pl. <code>cf_clearance</code>) a
+          látogató eszközén. Ezek a sütik kizárólag biztonsági célokat szolgálnak.
+        </p>
+        <p>
+          A biztonsági technológiák működésük során kezelhetnek böngésző-, eszköz- és
+          hálózati adatokat a kockázatelemzés részeként. Ezek az adatok nem kerülnek
+          felhasználásra marketing vagy profilalkotási célokra.
+        </p>
+        <p>
+          Jogalap: GDPR 6. cikk (1) bekezdés f) pont – az Adatkezelő jogos érdeke a
+          Weboldal biztonságos üzemeltetése. Ezek a technológiák a Weboldal alapvető
+          működéséhez szükségesek, és nem kapcsolhatók ki.
+        </p>
+
+        {/* 2.2 */}
+        <h3>2.2. Analitikai sütik</h3>
+        <p>
+          A Weboldal a <strong>Google Analytics 4</strong> (GA4) szolgáltatást használja a
+          látogatottsági adatok elemzéséhez. Az analitikai sütik kizárólag az Ön kifejezett
+          hozzájárulásával aktiválódnak. Hozzájárulás nélkül a Google Analytics nem gyűjt
+          adatokat és nem helyez el sütiket.
         </p>
         <table className={styles.table}>
           <tbody>
             <tr><th>Süti neve</th><th>Cél</th><th>Lejárat</th></tr>
-            <tr><td>cf_clearance</td><td>Cloudflare Turnstile biztonsági ellenőrzés – spam és bot elleni védelem</td><td>Munkamenet / 30 perc</td></tr>
+            <tr><td>_ga</td><td>Egyedi, véletlenszerű azonosító a látogatók megkülönböztetésére</td><td>2 év</td></tr>
+            <tr><td>_ga_&lt;azonosító&gt;</td><td>A GA4 mérési azonosítóhoz kötött munkamenet-állapot tárolása</td><td>2 év</td></tr>
           </tbody>
         </table>
+        <p>Jogalap: GDPR 6. cikk (1) bekezdés a) pont – az érintett önkéntes hozzájárulása.</p>
 
-        <h3>2.2. Analitikai sütik (hozzájáruláshoz kötött)</h3>
+        {/* 2.3 */}
+        <h3>2.3. Marketing- és hirdetésmérési sütik</h3>
         <p>
-          Ezek a sütik a Google Analytics szolgáltatáson keresztül segítenek megérteni,
-          hogyan használják a látogatók a Weboldalt. Csak az Ön kifejezett hozzájárulásával
-          aktiválódnak. Jogalap: GDPR 6. cikk (1) a) pont – hozzájárulás.
+          A Weboldal a <strong>Google Ads</strong> hirdetési rendszert használja a hirdetési
+          kampányok hatékonyságának méréséhez. A marketing sütik kizárólag az Ön kifejezett
+          hozzájárulásával aktiválódnak. Hozzájárulás hiányában a Google Ads nem gyűjt
+          adatokat és nem helyez el sütiket.
         </p>
         <table className={styles.table}>
           <tbody>
             <tr><th>Süti neve</th><th>Cél</th><th>Lejárat</th></tr>
-            <tr><td>_ga</td><td>Egyedi azonosító a látogatók megkülönböztetésére</td><td>2 év</td></tr>
-            <tr><td>_ga_*</td><td>Munkamenet-állapot tárolása</td><td>2 év</td></tr>
-            <tr><td>_gid</td><td>Egyedi azonosító a látogatók megkülönböztetésére (24 órás)</td><td>24 óra</td></tr>
-            <tr><td>_gat</td><td>Kérésszám-korlátozás</td><td>1 perc</td></tr>
+            <tr><td>_gcl_au</td><td>Konverziós események összekapcsolása a hirdetési kattintással</td><td>90 nap</td></tr>
+            <tr><td>_gcl_aw</td><td>Google Ads hirdetésre történő kattintás azonosítója</td><td>90 nap</td></tr>
           </tbody>
         </table>
+        <p>Jogalap: GDPR 6. cikk (1) bekezdés a) pont – az érintett önkéntes hozzájárulása.</p>
 
-        <h3>2.3. Marketing sütik (hozzájáruláshoz kötött)</h3>
-        <p>
-          Ezek a sütik a Google Ads hirdetési rendszerhez kapcsolódnak, és a hirdetési kampányok
-          hatékonyságának méréséhez, valamint remarketing célokra szolgálnak. Csak az Ön
-          kifejezett hozzájárulásával aktiválódnak. Jogalap: GDPR 6. cikk (1) a) pont – hozzájárulás.
-        </p>
-        <table className={styles.table}>
-          <tbody>
-            <tr><th>Süti neve</th><th>Cél</th><th>Lejárat</th></tr>
-            <tr><td>_gcl_au</td><td>Google Ads konverziókövetés</td><td>90 nap</td></tr>
-            <tr><td>_gcl_aw</td><td>Google Ads kattintásazonosító</td><td>90 nap</td></tr>
-            <tr><td>IDE / DSID</td><td>DoubleClick hirdetéskiszolgálás</td><td>1 év / munkamenet</td></tr>
-          </tbody>
-        </table>
-
+        {/* 2.4 */}
         <h3>2.4. Google Tag Manager</h3>
         <p>
-          A Google Tag Manager (GTM-N3F2F3HF) önmagában nem helyez el sütiket és nem gyűjt
-          személyes adatokat. A GTM egy címkekezelő rendszer, amelyen keresztül a fenti analitikai
-          és marketing szolgáltatások működnek. A GTM a Google Consent Mode v2 technológiát
-          használja, így az analitikai és marketing címkék csak a felhasználó hozzájárulása
-          után aktiválódnak.
+          A <strong>Google Tag Manager</strong> (GTM) egy címkekezelő rendszer, amely önmagában
+          nem helyez el sütiket és nem gyűjt személyes adatokat. A GTM feladata, hogy a
+          Weboldalon használt analitikai és marketing címkéket (kódokat) kezelje és a megfelelő
+          időben töltse be.
+        </p>
+        <p>
+          A Weboldal a <strong>Google Consent Mode v2</strong> technológiát alkalmazza, amely
+          biztosítja, hogy a GTM-en keresztül kezelt analitikai és marketing címkék
+          kizárólag a látogató megfelelő hozzájárulása után aktiválódhassanak. Hozzájárulás
+          hiányában ezek a címkék nem futnak, nem gyűjtenek adatokat és nem helyeznek el sütiket.
         </p>
 
-        <h2>3. Hogyan kezelheti a sütiket?</h2>
+        {/* 3. A hozzájárulás kezelése */}
+        <h2>3. A hozzájárulás kezelése</h2>
         <p>
-          A legtöbb böngésző lehetőséget biztosít a sütik kezelésére a böngésző beállításain
-          keresztül. Az alábbi linkeken tájékozódhat a legnépszerűbb böngészők sütibeállításairól:
+          A Weboldal első meglátogatásakor egy süti-beállítási ablak jelenik meg, amelyben
+          Ön kategóriánként dönthet az opcionális sütik elfogadásáról:
+        </p>
+        <ul>
+          <li><strong>Elfogadás:</strong> Az „Összes elfogadása" gombra kattintva valamennyi analitikai és marketing süti aktiválódik.</li>
+          <li><strong>Elutasítás:</strong> Az „Elutasítás" gombra kattintva kizárólag a feltétlenül szükséges technológiák maradnak aktívak.</li>
+          <li><strong>Egyéni beállítás:</strong> A „Kiválasztottak mentése" gombbal kategóriánként (analitikai, marketing) külön-külön határozhatja meg, mely sütiket engedélyezi.</li>
+        </ul>
+        <p>
+          <strong>A hozzájárulás bármikor visszavonható.</strong> A böngésző sütibeállításaiban
+          törölheti a Weboldal által elhelyezett sütiket, vagy a böngésző helyi tárhelyéből
+          (localStorage) eltávolíthatja a hozzájárulási beállítást. Ezt követően a Weboldal
+          újbóli meglátogatásakor ismét megjelenik a süti-beállítási ablak.
+        </p>
+        <p>
+          A sütik kezelésére a böngésző beállításain keresztül is lehetőség van:
         </p>
         <ul>
           <li><strong>Google Chrome:</strong> Beállítások → Adatvédelem és biztonság → Cookie-k</li>
@@ -296,14 +331,36 @@ export const CookiePage: React.FC = () => {
           <li><strong>Safari:</strong> Beállítások → Adatvédelem</li>
         </ul>
         <p>
-          Felhívjuk figyelmét, hogy a feltétlenül szükséges sütik letiltása esetén a Weboldal
+          A feltétlenül szükséges sütik és biztonsági technológiák letiltása esetén a Weboldal
           egyes funkciói nem működnek megfelelően.
         </p>
 
-        <h2>4. Kapcsolat</h2>
+        {/* 4. Külső szolgáltatók */}
+        <h2>4. Külső szolgáltatók</h2>
         <p>
-          A sütikkel kapcsolatos kérdéseivel forduljon az Adatkezelőhöz:{' '}
+          A Weboldal az alábbi külső szolgáltatók technológiáit használja:
+        </p>
+        <table className={styles.table}>
+          <tbody>
+            <tr><th>Szolgáltató</th><th>Tevékenység</th><th>Székhely</th></tr>
+            <tr><td>Cloudflare, Inc.</td><td>Spam és bot elleni védelem (Turnstile)</td><td>San Francisco, CA, USA</td></tr>
+            <tr><td>Google Ireland Limited</td><td>Webanalitika (GA4), hirdetésmérés (Google Ads), címkekezelés (GTM)</td><td>Dublin, Írország</td></tr>
+          </tbody>
+        </table>
+
+        {/* 5. Kapcsolat */}
+        <h2>5. Kapcsolat</h2>
+        <p>
+          A sütikkel és adatkezeléssel kapcsolatos kérdéseivel forduljon az Adatkezelőhöz:{' '}
           <strong>szepitlakinfo@gmail.com</strong>
+        </p>
+
+        {/* 6. A tájékoztató frissítése */}
+        <h2>6. A tájékoztató frissítése</h2>
+        <p>
+          Az Adatkezelő fenntartja a jogot, hogy jelen tájékoztatót egyoldalúan módosítsa.
+          A módosításról a Weboldalon közzétett frissített tájékoztató útján értesíti a
+          látogatókat. A tájékoztató módosítása a közzététellel lép hatályba.
         </p>
       </div>
     </LegalPage>
