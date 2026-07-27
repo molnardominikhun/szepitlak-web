@@ -43,9 +43,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.warn('TURNSTILE_SECRET_KEY nincs beállítva vagy bypass token érkezett, botvédelem kihagyva.');
     }
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Szépít-Lak Weboldal <onboarding@resend.dev>';
+    const toEmail = process.env.RESEND_TO_EMAIL || 'szepitlakinfo@gmail.com';
+
     const { data, error } = await resend.emails.send({
-      from: 'Szépít-Lak Weboldal <onboarding@resend.dev>',
-      to: 'szepitlakinfo@gmail.com',
+      from: fromEmail,
+      to: toEmail,
       replyTo: email,
       subject: `Szépít-Lak ajánlatkérés – ${name}`,
       html: `
