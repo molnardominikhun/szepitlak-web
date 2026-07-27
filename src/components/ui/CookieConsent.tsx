@@ -29,16 +29,25 @@ function writeConsent(consent: ConsentState) {
 
 /* Push Google Consent Mode v2 update via dataLayer */
 function pushConsentUpdate(consent: ConsentState) {
-  const w = window as unknown as { dataLayer: unknown[]; gtag: (...args: unknown[]) => void };
+  if (typeof window === 'undefined') return;
+  const w = window as unknown as {
+    dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
+  };
   w.dataLayer = w.dataLayer || [];
-  // Use gtag helper already defined in index.html
-  function gtag(...args: unknown[]) { w.dataLayer.push(args); }
-  gtag('consent', 'update', {
+
+  const updatePayload = {
     ad_storage: consent.marketing ? 'granted' : 'denied',
     ad_user_data: consent.marketing ? 'granted' : 'denied',
     ad_personalization: consent.marketing ? 'granted' : 'denied',
     analytics_storage: consent.analytics ? 'granted' : 'denied',
-  });
+  };
+
+  if (typeof w.gtag === 'function') {
+    w.gtag('consent', 'update', updatePayload);
+  } else {
+    w.dataLayer.push(['consent', 'update', updatePayload]);
+  }
 }
 
 /* ──────────────────────────────────────────────────────────

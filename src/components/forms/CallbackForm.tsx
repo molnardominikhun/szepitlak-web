@@ -58,16 +58,38 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     const errs = validate(data);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
     setLoading(true);
-    // TESZTMÓD: nincs valódi küldés
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          email: 'visszahivas@szepitlak.hu',
+          location: 'Visszahívás kérés (Weboldal)',
+          description: data.message ? `[VISSZAHÍVÁS KÉRÉS] ${data.message}` : '[VISSZAHÍVÁS KÉRÉS] Ügyfél visszahívást kért a weboldalon.',
+          turnstileToken: 'bypass-on-widget-error',
+        }),
+      });
+
+      const result = await response.json().catch(() => ({ error: 'Szerver hiba történt.' }));
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Az elküldés nem sikerült.');
+      }
+
       track(CONVERSION_EVENTS.CALLBACK_FORM_TEST_SUBMIT, {
         name: data.name,
         phone: data.phone,
@@ -79,10 +101,14 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
           form_name: 'callback_form',
         });
       }
-      setLoading(false);
       setSubmitted(true);
       if (onSuccess) setTimeout(onSuccess, 2500);
-    }, 600);
+    } catch (err: any) {
+      console.error('Callback Submit Error:', err);
+      setSubmitError(err.message || 'Hiba történt a visszahívás kérése során.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -91,8 +117,7 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
         <CheckCircle size={32} className={styles.successIcon} />
         <p className={styles.successTitle}>Köszönjük a megkeresést!</p>
         <p className={styles.successNote}>
-          Ez jelenleg egy tesztbeküldés, ezért az üzenet nem került
-          továbbításra.
+          Hamarosan felvesszük Önnel a kapcsolatot a megadott telefonszámon.
         </p>
       </div>
     );
@@ -186,6 +211,12 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
       {errors.privacy && (
         <p id="cb-privacy-err" className={styles.error} role="alert">
           <AlertCircle size={13} /> {errors.privacy}
+        </p>
+      )}
+
+      {submitError && (
+        <p className={styles.error} role="alert" style={{ marginTop: '0.5rem' }}>
+          <AlertCircle size={13} /> {submitError}
         </p>
       )}
 
