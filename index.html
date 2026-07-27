@@ -10,23 +10,40 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       (function() {
-        var adConsent = 'denied';
-        var analyticsConsent = 'denied';
+        var eeaRegions = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'GB'];
+        var stored = null;
         try {
-          var stored = localStorage.getItem('szepitlak_cookie_consent');
-          if (stored) {
-            var parsed = JSON.parse(stored);
-            if (parsed.marketing) adConsent = 'granted';
-            if (parsed.analytics) analyticsConsent = 'granted';
-          }
+          var raw = localStorage.getItem('szepitlak_cookie_consent');
+          if (raw) stored = JSON.parse(raw);
         } catch(e) {}
-        gtag('consent', 'default', {
-          'ad_storage': adConsent,
-          'ad_user_data': adConsent,
-          'ad_personalization': adConsent,
-          'analytics_storage': analyticsConsent,
-          'wait_for_update': 500
-        });
+
+        if (stored) {
+          gtag('consent', 'default', {
+            'ad_storage': stored.marketing ? 'granted' : 'denied',
+            'ad_user_data': stored.marketing ? 'granted' : 'denied',
+            'ad_personalization': stored.marketing ? 'granted' : 'denied',
+            'analytics_storage': stored.analytics ? 'granted' : 'denied',
+            'wait_for_update': 500
+          });
+        } else {
+          // Default deny for EEA (EU + EFTA) regions
+          gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'region': eeaRegions,
+            'wait_for_update': 500
+          });
+          // Default grant for non-EEA traffic
+          gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500
+          });
+        }
       })();
     </script>
 
