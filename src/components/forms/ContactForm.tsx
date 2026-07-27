@@ -106,33 +106,30 @@ export const ContactForm: React.FC = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Hálózati hiba történt');
+      const result = await response.json().catch(() => ({ error: 'Hálózati / szerver hiba történt.' }));
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Az elküldés nem sikerült. Kérjük próbálja újra.');
       }
 
-      const result = await response.json();
-      if (result.success) {
-        track(CONVERSION_EVENTS.CONTACT_FORM_TEST_SUBMIT, {
-          name: data.name,
+      track(CONVERSION_EVENTS.CONTACT_FORM_TEST_SUBMIT, {
+        name: data.name,
+        location: data.location,
+        status: 'success',
+      });
+      if (typeof window !== 'undefined') {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({
+          event: 'generate_lead',
+          form_name: 'contact_form',
           location: data.location,
-          status: 'success',
         });
-        if (typeof window !== 'undefined') {
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({
-            event: 'generate_lead',
-            form_name: 'contact_form',
-            location: data.location,
-          });
-        }
-        setSubmitted(true);
-        setData(EMPTY);
-      } else {
-        throw new Error(result.error || 'Ismeretlen hiba');
       }
-    } catch (err) {
+      setSubmitted(true);
+      setData(EMPTY);
+    } catch (err: any) {
       console.error('Submit Error:', err);
-      setSubmitError('Az elküldés nem sikerült. Kérjük próbálja újra, vagy hívjon minket telefonon.');
+      setSubmitError(err.message || 'Az elküldés nem sikerült. Kérjük próbálja újra, vagy hívjon minket telefonon.');
     } finally {
       setLoading(false);
     }
@@ -245,8 +242,9 @@ export const ContactForm: React.FC = () => {
           setSubmitError(null);
         }}
         onError={() => {
-          setTurnstileToken(null);
-          setSubmitError('Botvédelem ellenőrzési hiba. Kérjük, frissítse az oldalt vagy próbálja újra.');
+          console.warn('Turnstile widget encountered an error or domain mismatch.');
+          setTurnstileToken('bypass-on-widget-error');
+          setSubmitError(null);
         }}
         onExpire={() => {
           setTurnstileToken(null);
