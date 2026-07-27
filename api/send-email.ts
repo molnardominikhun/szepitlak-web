@@ -41,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { data, error } = await resend.emails.send({
       from: 'Szépít-Lak Weboldal <onboarding@resend.dev>',
-      to: 'molnardominikhun@gmail.com',
+      to: 'szepitlakinfo@gmail.com',
       replyTo: email,
       subject: `Szépít-Lak ajánlatkérés – ${name}`,
       html: `
