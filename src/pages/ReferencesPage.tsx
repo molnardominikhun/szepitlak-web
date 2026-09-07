@@ -3,10 +3,12 @@ import styles from './ReferencesPage.module.css';
 import { references, ReferenceItem } from '../data/references';
 import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CtaBanner } from '../components/ui/CtaBanner';
+import { useSeo } from '../hooks/useSeo';
 
 type FilterType = 'all' | 'nyilaszaro' | 'belteri-ajtok' | 'szunyoghalok' | 'arnyekolok';
 
 export const ReferencesPage: React.FC = () => {
+  useSeo();
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 

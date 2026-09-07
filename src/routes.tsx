@@ -1,0 +1,31 @@
+import { RouteObject } from 'react-router-dom';
+import { Layout } from './components/layout/Layout';
+import { HomePage } from './pages/HomePage';
+import { ServicesPage } from './pages/ServicesPage';
+import { NyilaszaroPage } from './pages/NyilaszaroPage';
+import { ArnyekolokPage } from './pages/ArnyekolokPage';
+import { BelteriAjtokPage } from './pages/BelteriAjtokPage';
+import { SzunyoghalokPage } from './pages/SzunyoghalokPage';
+import { KapcsolatPage } from './pages/KapcsolatPage';
+import { ReferencesPage } from './pages/ReferencesPage';
+import { AdatkezelesiPage, CookiePage, ImpresszumPage } from './pages/LegalPages';
+
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'szolgaltatasaink', element: <ServicesPage /> },
+      { path: 'szolgaltatasaink/nyilaszaro', element: <NyilaszaroPage /> },
+      { path: 'szolgaltatasaink/arnyekolok', element: <ArnyekolokPage /> },
+      { path: 'szolgaltatasaink/belteri-ajtok', element: <BelteriAjtokPage /> },
+      { path: 'szolgaltatasaink/szunyoghalok', element: <SzunyoghalokPage /> },
+      { path: 'referenciak', element: <ReferencesPage /> },
+      { path: 'kapcsolat', element: <KapcsolatPage /> },
+      { path: 'adatkezelesi-tajekoztato', element: <AdatkezelesiPage /> },
+      { path: 'cookie-tajekoztato', element: <CookiePage /> },
+      { path: 'impresszum', element: <ImpresszumPage /> },
+    ],
+  },
+];

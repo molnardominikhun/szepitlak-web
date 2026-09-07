@@ -4,9 +4,13 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { FloatingCallbackButton } from './FloatingCallbackButton';
 import { CookieConsent } from '../ui/CookieConsent';
+import { useSeo } from '../../hooks/useSeo';
 
 export const Layout: React.FC = () => {
   const { pathname, search } = useLocation();
+
+  // Automatikus SEO metaadat frissítés (title, description, canonical URL, OG tégek)
+  useSeo();
 
   // Route váltáskor: görgetés az oldal tetejére + GA4 / dataLayer page_view esemény küldése
   useEffect(() => {

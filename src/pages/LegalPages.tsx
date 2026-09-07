@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './LegalPage.module.css';
+import { useSeo } from '../hooks/useSeo';
 
 interface LegalPageProps {
   title: string;
@@ -28,7 +29,7 @@ const LegalPage: React.FC<LegalPageProps> = ({ title, children }) => (
    GDPR (2016/679/EU) + Infotv. (2011. évi CXII. tv.) kompatibilis
    ═══════════════════════════════════════════════════════════════ */
 export const AdatkezelesiPage: React.FC = () => {
-  React.useEffect(() => { document.title = 'Adatkezelési tájékoztató – Szépít-Lak Kft.'; }, []);
+  useSeo();
   return (
     <LegalPage title="Adatkezelési tájékoztató">
       <div className={styles.legal}>
@@ -217,7 +218,7 @@ export const AdatkezelesiPage: React.FC = () => {
    COOKIE (SÜTI) TÁJÉKOZTATÓ
    ═══════════════════════════════════════════════════════════════ */
 export const CookiePage: React.FC = () => {
-  React.useEffect(() => { document.title = 'Cookie (süti) tájékoztató – Szépít-Lak Kft.'; }, []);
+  useSeo();
   return (
     <LegalPage title="Cookie (süti) tájékoztató">
       <div className={styles.legal}>
@@ -371,7 +372,7 @@ export const CookiePage: React.FC = () => {
    IMPRESSZUM
    ═══════════════════════════════════════════════════════════════ */
 export const ImpresszumPage: React.FC = () => {
-  React.useEffect(() => { document.title = 'Impresszum – Szépít-Lak Kft.'; }, []);
+  useSeo();
   return (
     <LegalPage title="Impresszum">
       <div className={styles.legal}>
