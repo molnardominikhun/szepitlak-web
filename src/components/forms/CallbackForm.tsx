@@ -91,8 +91,7 @@ export const CallbackForm: React.FC<CallbackFormProps> = ({ onSuccess }) => {
       }
 
       track(CONVERSION_EVENTS.CALLBACK_FORM_TEST_SUBMIT, {
-        name: data.name,
-        phone: data.phone,
+        status: 'success',
       });
       if (typeof window !== 'undefined') {
         (window as any).dataLayer = (window as any).dataLayer || [];

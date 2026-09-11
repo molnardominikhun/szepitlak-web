@@ -113,7 +113,6 @@ export const ContactForm: React.FC = () => {
       }
 
       track(CONVERSION_EVENTS.CONTACT_FORM_TEST_SUBMIT, {
-        name: data.name,
         location: data.location,
         status: 'success',
       });

@@ -29,11 +29,13 @@ export interface ConversionEventPayload {
  * Élesítéskor: window.dataLayer.push(payload) stb.
  */
 export function trackEvent(payload: ConversionEventPayload): void {
-  // --- TESZTMÓD ---
-  console.log('[Szépít-Lak Analytics – TEST]', payload);
+  if (typeof window === 'undefined') return;
 
-  // --- ÉLESÍTÉSKOR aktiválni: ---
-  // if (typeof window !== 'undefined' && Array.isArray((window as any).dataLayer)) {
-  //   (window as any).dataLayer.push(payload);
-  // }
+  if (import.meta.env.DEV) {
+    console.log('[Szépít-Lak Analytics]', payload);
+  }
+
+  const w = window as unknown as { dataLayer: unknown[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push(payload);
 }
