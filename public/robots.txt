@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://szepitlak.hu/sitemap.xml
+Sitemap: https://www.szepitlak.hu/sitemap.xml

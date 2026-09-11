@@ -13,57 +13,57 @@ const routesSeoData = {
   '/': {
     title: 'Szépít-Lak Kft. – Minőségi Nyílászárók, Árnyékolók és Beépítés Tatabányán',
     description: 'Komplett nyílászáró-, beltéri ajtó-, árnyékolástechnikai és szúnyogháló-megoldások felméréssel, tanácsadással és precíz beépítéssel Tatabányán és Komárom-Esztergom vármegyében.',
-    canonicalUrl: 'https://szepitlak.hu/',
+    canonicalUrl: 'https://www.szepitlak.hu/',
   },
   '/szolgaltatasaink': {
     title: 'Szolgáltatásaink – Nyílászárók, Árnyékolók, Beltéri Ajtók | Szépít-Lak Kft.',
     description: 'Fedezze fel szolgáltatásainkat: nyílászárók, árnyékolástechnika, beltéri ajtók és szúnyoghálók szakszerű felmérése és beépítése Tatabányán.',
-    canonicalUrl: 'https://szepitlak.hu/szolgaltatasaink',
+    canonicalUrl: 'https://www.szepitlak.hu/szolgaltatasaink',
   },
   '/szolgaltatasaink/nyilaszaro': {
     title: 'Műanyag és Fa Nyílászárók Tatabányán | Szépít-Lak Kft.',
     description: 'Prémium minőségű műanyag és fa ablakok, erkélyajtók és bejárati ajtók szakszerű felmérése, értékesítése és beépítése Tatabányán és környékén.',
-    canonicalUrl: 'https://szepitlak.hu/szolgaltatasaink/nyilaszaro',
+    canonicalUrl: 'https://www.szepitlak.hu/szolgaltatasaink/nyilaszaro',
   },
   '/szolgaltatasaink/arnyekolok': {
     title: 'Árnyékolástechnika: Redőnyök, Zsaluziák, Reluxák | Szépít-Lak Kft.',
     description: 'Kültéri és beltéri árnyékolók, műanyag és alumínium redőnyök, motoros zsaluziák széles választéka és szakszerű beépítése.',
-    canonicalUrl: 'https://szepitlak.hu/szolgaltatasaink/arnyekolok',
+    canonicalUrl: 'https://www.szepitlak.hu/szolgaltatasaink/arnyekolok',
   },
   '/szolgaltatasaink/belteri-ajtok': {
     title: 'Beltéri Ajtók – CPL, Dekorfóliás és Festett Ajtók | Szépít-Lak Kft.',
     description: 'Stílusos és tartós beltéri ajtók széles szín- és mintaválasztékban, egyedi méretre gyártva és szakszerűen beépítve Tatabányán.',
-    canonicalUrl: 'https://szepitlak.hu/szolgaltatasaink/belteri-ajtok',
+    canonicalUrl: 'https://www.szepitlak.hu/szolgaltatasaink/belteri-ajtok',
   },
   '/szolgaltatasaink/szunyoghalok': {
     title: 'Szúnyoghálók – Fix, Rolós és Plisszé Rendszerek | Szépít-Lak Kft.',
     description: 'Egyedi méretre készült szúnyoghálók ablakokra és ajtókra. Fix, mobil rolós és plisszé szúnyoghálók szakszerű felszereléssel.',
-    canonicalUrl: 'https://szepitlak.hu/szolgaltatasaink/szunyoghalok',
+    canonicalUrl: 'https://www.szepitlak.hu/szolgaltatasaink/szunyoghalok',
   },
   '/referenciak': {
     title: 'Referenciáink – Elvégzett Munkáink Tatabányán | Szépít-Lak Kft.',
     description: 'Tekintse meg legutóbbi ablakcsere, ajtóbeépítés és árnyékolástechnikai munkáinkat fotókkal és elégedett ügyfélvéleményekkel.',
-    canonicalUrl: 'https://szepitlak.hu/referenciak',
+    canonicalUrl: 'https://www.szepitlak.hu/referenciak',
   },
   '/kapcsolat': {
     title: 'Kapcsolat – Kérjen Ingyenes Ajánlatot | Szépít-Lak Kft.',
     description: 'Lépjen kapcsolatba velünk! Ingyenes helyszíni felmérés és árajánlatadás Tatabányán és környékén. Elérhetőségek és nyitvatartás.',
-    canonicalUrl: 'https://szepitlak.hu/kapcsolat',
+    canonicalUrl: 'https://www.szepitlak.hu/kapcsolat',
   },
   '/adatkezelesi-tajekoztato': {
     title: 'Adatkezelési Tájékoztató | Szépít-Lak Kft.',
     description: 'A Szépít-Lak Kft. adatkezelési tájékoztatója és GDPR adatvédelmi szabályzata.',
-    canonicalUrl: 'https://szepitlak.hu/adatkezelesi-tajekoztato',
+    canonicalUrl: 'https://www.szepitlak.hu/adatkezelesi-tajekoztato',
   },
   '/cookie-tajekoztato': {
     title: 'Cookie (Süti) Tájékoztató | Szépít-Lak Kft.',
     description: 'Információk a Szépít-Lak Kft. weboldalán használt sütikről (cookie-król) és azok kezeléséről.',
-    canonicalUrl: 'https://szepitlak.hu/cookie-tajekoztato',
+    canonicalUrl: 'https://www.szepitlak.hu/cookie-tajekoztato',
   },
   '/impresszum': {
     title: 'Impresszum | Szépít-Lak Kft.',
     description: 'Céginformációk, üzemeltető adatai és jogi tudnivalók - Szépít-Lak Kft.',
-    canonicalUrl: 'https://szepitlak.hu/impresszum',
+    canonicalUrl: 'https://www.szepitlak.hu/impresszum',
   },
 };
 

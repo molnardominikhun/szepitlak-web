@@ -1,4 +1,22 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "szepitlak-web.vercel.app"
+        }
+      ],
+      "destination": "https://www.szepitlak.hu/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/szolgaltatasaink/arnyakolok",
+      "destination": "/szolgaltatasaink/arnyekolok",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",

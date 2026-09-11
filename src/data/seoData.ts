@@ -7,7 +7,7 @@ export interface SeoMetadata {
   ogUrl?: string;
 }
 
-export const SITE_URL = 'https://szepitlak.hu';
+export const SITE_URL = 'https://www.szepitlak.hu';
 
 export const routesSeoData: Record<string, SeoMetadata> = {
   '/': {
